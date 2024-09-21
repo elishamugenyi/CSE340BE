@@ -4,3 +4,115 @@
 *:after {
   box-sizing: border-box;
 }
+/* Reset styles */
+body, h1, h2, p, ul, li, a {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('images/site/checkerboard.jpg');
+  background-size: cover;
+}
+
+/* Header styling */
+header {
+  background-color: rgba(240, 240, 240, 0.8); /* Semi-transparent */
+  padding: 10px;
+  position: relative;
+  z-index: 10;
+}
+.siteName a {
+  font-size: 24px;
+  color: #333;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  background-color: black; 
+}
+
+nav li {
+  margin: 0 10px;
+  color:#fff
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Hero section styling */
+.hero {
+  background-image: url('images/site/checkerboard.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 50px;
+  text-align: center;
+  padding: 50px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8); /*semi transparent*/
+  border-radius: 10px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-image {
+  width: 300px;
+  height: auto;
+  margin: 20px auto;
+}
+
+.btn {
+  background-size: 40px;
+  background-position: left;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  height: 50px;
+}
+
+/* DeLorean upgrades section styling */
+.delorean-upgrades {
+  padding: 20px;
+}
+
+.upgrade-items {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 50px;
+}
+
+.upgrade-items img {
+  width: 150px;
+  height: auto;
+}
+
+/* DeLorean reviews section styling */
+.delorean-reviews {
+  padding: 20px;
+}
+
+.review {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Footer styling */
+footer {
+  text-align: center;
+  padding: 10px;
+}
