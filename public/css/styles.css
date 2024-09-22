@@ -22,7 +22,7 @@ body {
 }
 /*container with content*/
 .main-container {
-  max-width: 960px;
+    max-width: 960px;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.9);
     padding: 20px;
@@ -36,15 +36,12 @@ header {
   align-items: center;
   background-color: #f0f0f0;
   padding: 10px 20px;
-  /*position: relative;
-  z-index: 10;*/
 }
 .siteName a {
   font-size: 24px;
   color: #333;
   text-decoration: none;
 }
-
 nav ul {
   list-style: none;
   display: flex;
@@ -53,7 +50,6 @@ nav ul {
   background-color: black;
   padding: 10px 0; 
 }
-
 nav li {
   margin: 0 10px;
   color:#fff
@@ -103,7 +99,6 @@ nav a {
   height: auto;
   margin: 20px auto;
 }
-
 .btn {
   display: inline-block;
   padding: 10px 20px;
@@ -122,11 +117,9 @@ nav a {
   justify-content: space-between;
   margin-top: 30px;
 }
-
 .delorean-upgrades, .delorean-reviews {
   flex-basis: 48%;
 }
-
 .delorean-upgrades h2, .delorean-reviews h2 {
   font-size: 24px;
   margin-bottom: 10px;
