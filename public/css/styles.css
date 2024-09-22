@@ -1,4 +1,6 @@
 /******* Change Box Model ***************/
+
+/************ Mobile First *******************/
 *,
 *:before,
 *:after {
@@ -16,55 +18,86 @@ body {
   font-family: Arial, sans-serif;
   background-image: url('images/site/checkerboard.jpg');
   background-size: cover;
+  background-position: center;
 }
-
+/*container with content*/
+.main-container {
+  max-width: 960px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
 /* Header styling */
 header {
-  background-color: rgba(240, 240, 240, 0.8); /* Semi-transparent */
-  padding: 10px;
-  position: relative;
-  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 10px 20px;
+  /*position: relative;
+  z-index: 10;*/
 }
 .siteName a {
   font-size: 24px;
   color: #333;
+  text-decoration: none;
 }
 
 nav ul {
   list-style: none;
   display: flex;
   justify-content: space-between;
-  background-color: black; 
+  width: 100%;
+  background-color: black;
+  padding: 10px 0; 
 }
 
 nav li {
   margin: 0 10px;
   color:#fff
 }
-
+nav li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
 nav a {
   text-decoration: none;
   color: #333;
 }
-
+#tool a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
 /* Hero section styling */
 .hero {
-  background-image: url('images/site/checkerboard.jpg');
-  background-size: cover;
-  background-position: center;
-  padding: 50px;
-  text-align: center;
-  padding: 50px;
+  padding: 20px;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.8); /*semi transparent*/
   border-radius: 10px;
 }
-
+.hero h1 {
+  font-size: 28px;
+}
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hero-text {
+  text-align: left;
+}
+.hero ul {
+  list-style: none;
+  padding-left: 0;
+}
 .container {
-  max-width: 800px;
+  max-width: 500px;
   margin: 0 auto;
 }
-
 .hero-image {
   width: 300px;
   height: auto;
@@ -72,47 +105,107 @@ nav a {
 }
 
 .btn {
-  background-size: 40px;
-  background-position: left;
   display: inline-block;
   padding: 10px 20px;
+  background-color: #007BFF;
   color: #fff;
+  border-radius: 5px;
   text-decoration: none;
+  margin-top: 10px;
   cursor: pointer;
   height: 50px;
 }
 
-/* DeLorean upgrades section styling */
-.delorean-upgrades {
-  padding: 20px;
-}
-
-.upgrade-items {
+/* Content section styling */
+.content-section {
   display: flex;
   justify-content: space-between;
-  margin-right: 50px;
+  margin-top: 30px;
 }
 
+.delorean-upgrades, .delorean-reviews {
+  flex-basis: 48%;
+}
+
+.delorean-upgrades h2, .delorean-reviews h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Upgrade items */
+.upgrade-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
 .upgrade-items img {
-  width: 150px;
+  width: 100px;
   height: auto;
 }
-
-/* DeLorean reviews section styling */
-.delorean-reviews {
-  padding: 20px;
-}
-
 .review {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  margin-bottom: 10px;
 }
-
 /* Footer styling */
 footer {
   text-align: center;
   padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+/******* Media Queries for larger screens ***************/
+@media screen and (min-width: 768px) {
+  /* Content container for larger devices */
+  .content-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Navigation styling */
+  nav ul {
+    justify-content: space-around;
+  }
+
+  /* Hero section */
+  .hero-image {
+    width: 300px;
+  }
+
+  /* Main section flex layout */
+  .main-section {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .delorean-upgrades,
+  .delorean-reviews {
+    width: 48%;
+  }
+
+  /* Upgrade items responsive styling */
+  .upgrade-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .upgrade-items img {
+    width: 150px;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  /* Extra-large screen adjustments */
+  .content-container {
+    max-width: 1400px;
+  }
 }
