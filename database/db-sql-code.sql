@@ -236,3 +236,14 @@ VALUES   (
     'White',
     5
   );
+
+--4.MODIFY GM HUMMER
+UPDATE public.inventory
+SET inv_description = REPLACE(inv_description, 'small interiors', 'a huge interior')
+WHERE inv_make = 'GM' AND inv_model = 'Hummer';
+
+--6. UPDATE ALL RECORDS TO INCLUDE /VEHICLES IN THE PATH.
+UPDATE public.inventory
+SET inv_image = regexp_replace(inv_image, '^(/images/)', '/images/vehicles/'),
+    inv_thumbnail = regexp_replace(inv_thumbnail, '^(/images/)', '/images/vehicles/');
+
