@@ -1,0 +1,15 @@
+<!-- Content heading
+ <title> element that describes the content of the view. 
+Closely associated is to have a <h1> heading 
+that does the same thing. -->
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+} %>
+
+<!-- A message block-->
+<%# messages() %>
+
+<!-- Inventory Items Display-->
+<%- grid %>

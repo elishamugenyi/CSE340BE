@@ -141,6 +141,89 @@ nav a {
   padding: 10px;
   margin-bottom: 10px;
 }
+
+/*styling for cards and classes added to the dynamic html on the nav pages*/
+
+/* Navigation styling */
+.nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  background-color: #333;
+  padding: 10px;
+  margin: 0;
+}
+
+.nav-item {
+  margin: 0 15px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #555;
+}
+
+/* Grid styling */
+.grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.grid-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.grid-item:hover {
+  transform: scale(1.05);
+}
+
+.grid-link {
+  display: block;
+  text-decoration: none;
+  color: #333;
+}
+
+.grid-image {
+  width: 100%;
+  height: auto;
+}
+
+.grid-title {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.grid-price {
+  font-size: 16px;
+  color: #007BFF;
+  font-weight: bold;
+}
+
+/* Utility classes */
+.notice {
+  padding: 20px;
+  background-color: #ffdddd;
+  border: 1px solid #ff5c5c;
+  color: #333;
+  text-align: center;
+  border-radius: 5px;
+}
+/*styling for dynamic elements, ends here*/
+
 /* Footer styling */
 footer {
   text-align: center;
