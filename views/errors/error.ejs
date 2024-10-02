@@ -1,0 +1,13 @@
+<!-- Content heading
+ <title> element that describes the content of the view. 
+Closely associated is to have a <h1> heading 
+that does the same thing. -->
+<% if (title) { %>
+    <h1><%= title || "Error" %></h1>
+    <p><%= message || "An unexpected error occured." %></p>
+    <% } else {
+      res.redirect('/')
+} %>
+
+<!-- A message block-->
+<%# messages() %>
