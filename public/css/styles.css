@@ -47,7 +47,7 @@ nav ul {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  background-color: black;
+  background-color: #0063B2FF;
   padding: 10px 0; 
 }
 nav li {
@@ -61,11 +61,11 @@ nav li a {
 }
 nav a {
   text-decoration: none;
-  color: #333;
+  color: #ADEFD1FF;
 }
 #tool a {
   text-decoration: none;
-  color: #333;
+  color: #89ABE3FF;
   font-size: 14px;
 }
 /* Hero section styling */
@@ -102,8 +102,8 @@ nav a {
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #007BFF;
-  color: #fff;
+  background-color: #00203FFF;
+  color: #ADEFD1FF;
   border-radius: 5px;
   text-decoration: none;
   margin-top: 10px;
@@ -149,7 +149,7 @@ nav a {
   list-style: none;
   display: flex;
   justify-content: space-between;
-  background-color: #333;
+  background-color: #0063B2FF;
   padding: 10px;
   margin: 0;
 }
@@ -167,7 +167,7 @@ nav a {
 }
 
 .nav-link:hover {
-  background-color: #555;
+  background-color: #00203FFF;
 }
 
 /* Grid styling */
@@ -209,7 +209,7 @@ nav a {
 
 .grid-price {
   font-size: 16px;
-  color: #007BFF;
+  color: #00203FFF;
   font-weight: bold;
 }
 
