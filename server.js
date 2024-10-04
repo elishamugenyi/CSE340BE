@@ -13,6 +13,8 @@ const static = require("./routes/static")
 const inventoryRoute = require("./routes/inventoryRoute")
 const baseController = require("./controllers/baseController")
 const utilities = require("./utilities/index")
+const errorHandler = require("./middleware/errormiddleware")//addded error handler to be used.
+const errorRoute = require("./routes/errorRoute") //addind route to serve application
 
 
 /* ***********************
@@ -27,6 +29,11 @@ app.set("layout", "./layouts/layout") // not at views root
  *************************/
 app.use("/inv", inventoryRoute)//added new invetoryRoute i created in invetoryRoute file
 app.use(static)
+
+//add the error handler middleware at the end of all routes
+app.use(errorHandler)
+//add intentional error route to application
+app.use('/', errorRoute)
 
 
 //index route

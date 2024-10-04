@@ -233,6 +233,36 @@ footer {
   border-radius: 10px;
 }
 
+/* styling for vehicle details */
+.vehicle-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vehicle-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.vehicle-content img {
+  max-width: 100%;
+  height: auto;
+  flex-basis: 50%;
+}
+
+.vehicle-info {
+  flex-basis: 50%;
+  padding: 1rem;
+}
+
+/* Responsive for small screens */
+@media (max-width: 768px) {
+  .vehicle-content {
+    flex-direction: column;
+  }
+}
+
 /******* Media Queries for larger screens ***************/
 @media screen and (min-width: 768px) {
   /* Content container for larger devices */

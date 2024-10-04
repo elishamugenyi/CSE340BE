@@ -1,13 +1,18 @@
-<!-- Content heading
- <title> element that describes the content of the view. 
-Closely associated is to have a <h1> heading 
-that does the same thing. -->
-<% if (title) { %>
-    <h1><%= title || "Error" %></h1>
-    <p><%= message || "An unexpected error occured." %></p>
-    <% } else {
-      res.redirect('/')
-} %>
-
-<!-- A message block-->
-<%# messages() %>
+<!-- Content heading -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Error Page">
+    <title><%= title || "Error" %></title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Include your stylesheet if needed -->
+</head>
+<body>
+    <div class="error-container">
+        <h1><%= title || "Error" %></h1>
+        <p><%= message || "An unexpected error occurred." %></p>
+        <p>Please try again later or go back to the <a href="/">homepage</a>.</p>
+    </div>
+</body>
+</html>

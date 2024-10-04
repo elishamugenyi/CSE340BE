@@ -7,6 +7,20 @@ with the tables in the database
 const pool = require("../database/")
 
 /* ***************************
+ *  Define a model func getVehicleById that queries the database
+    for a specific vehicle based on the inventory ID -04/october
+ * ************************** */
+  const getVehicleById = async (invId) => {
+    try {
+      const result = await pool.query("SELECT * FROM inventory WHERE inv_id = $1", [invId])
+      return result.rows[0] // Return the single vehicle data
+    } catch (error) {
+      console.error("Error getting vehicle by ID:", error)
+      throw error
+    }
+  }
+
+/* ***************************
  *  Get all classification data
  * ************************** */
 async function getClassifications(){
@@ -33,4 +47,4 @@ async function getInventoryByClassificationId(classification_id) {
 
 
 
-module.exports = {getClassifications, getInventoryByClassificationId};
+module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById};
