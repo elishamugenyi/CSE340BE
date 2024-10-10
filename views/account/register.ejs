@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/styles.css"> 
+</head>
+<body>
+  <header>
+    <h1><%= title %></h1>
+  </header>
+
+  <!-- Flash message section -->
+  <%/* if (typeof message !== 'undefined') { %>
+    <div class="flash-message">
+      <%=/* message*/ %>
+    </div>
+  <%/* } */%>
+,!--Registration view error display-->
+  <% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+  <!-- Login form -->
+  <section>
+    <form action="/account/register" method="POST" class="register-form">
+      <div class="form-group">
+        <label for="account_firstname">First Name:
+        <input type="text" id="account_firstname" name="account_firstname" placeholder="Enter valid email" required>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="account_lastname">Last Name:
+        <input type="text" id="account_lastname" name="account_lastname" required>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="account_email">Email Address:
+        <input type="email" id="account_email" name="account_email" placeholder="Enter a valid email address" required>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="account_password">Password:
+        <input type="password" id="account_password" name="account_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required>
+        <span>Passwords minimum lenght is 12 character long, contain at least 1 capital letter, 1 number,1 special character"</span>
+        </label>
+      </div>
+
+      <button type="submit">Register</button>
+    </form>
+  </section>
+
+  <!-- Link to registration view -->
+  <footer>
+    <!--<p>Don't have an account? <a href="/account/register">Register here</a>.</p> -->
+  </footer>
+</body>
+</html>

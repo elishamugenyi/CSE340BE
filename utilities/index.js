@@ -1,6 +1,13 @@
 const invModel = require("../models/inventory-model")
 const Util = {}
 
+// Error-handling middleware
+Util.handleErrors = function (fn) {
+  return function (req, res, next) {
+    fn(req, res, next).catch(next)
+  }
+}
+
 /* ************************
  * Constructs the nav HTML unordered list
  ************************** */
