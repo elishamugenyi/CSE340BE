@@ -1,0 +1,84 @@
+
+
+<h1>Add New Inventory Item</h1>
+
+<!-- Flash message for success/failure -->
+<% if (messages && messages.length) { %>
+  <% messages.forEach(message => { %>
+    <div class="flash-message"><%= message %></div>
+  <% }) %>
+<% } %>
+<!-- Error Messages -->
+<% if (errors && errors.length) { %>
+    <% errors.forEach(error => { %>
+      <div class="error-message"><%= error.msg %></div>
+    <% }) %>
+<% } %>
+  
+
+<form action="/inv/add-inventory" method="POST" enctype="multipart/form-data" class="invform">
+  <!-- Vehicle Make -->
+  <div class="form-group">
+    <label for="inv_make">Vehicle Make
+    <input type="text" id="inv_make" name="inv_make" pattern="^[a-zA-Z]+$" placeholder="Enter only Text" required></label>
+  </div>
+
+  <!-- Vehicle Model -->
+  <div class="form-group">
+    <label for="inv_model">Vehicle Model
+    <input type="text" id="inv_model" name="inv_model" pattern="^[a-zA-Z0-9]+$" placeholder="Enter only Alphanumeric characters" required></label>
+  </div>
+
+  <!-- Vehicle Year -->
+  <div class="form-group">
+    <label for="inv_year">Vehicle Year
+    <input type="number" id="inv_year" name="inv_year" required pattern="\d{4}" placeholder="Enter only year in digits"></label>
+  </div>
+
+  <!-- Vehicle Description -->
+  <div class="form-group">
+    <label for="inv_description">Vehicle Description
+    <textarea id="inv_description" name="inv_description" pattern="^[a-zA-Z]+$" required placeholder="Enter only text"></textarea></label>
+  </div>
+
+  <!-- Vehicle Image -->
+  <div class="form-group">
+    <label for="inv_image">Vehicle Image
+    <input type="text" id="inv_image" name="inv_image" value="<%- inv_image || '/images/vehicles/no-image.png' %>" required></label>
+  </div>
+
+  <!-- Vehicle Thumbnail -->
+  <div class="form-group">
+    <label for="inv_thumbnail">Vehicle Thumbnail
+    <input type="text" id="inv_thumbnail" name="inv_thumbnail" value="<%- inv_thumbnail || '/images/vehicles/no-image-tn.png' %>" required></label>
+  </div>
+
+  <!-- Vehicle Price -->
+  <div class="form-group">
+    <label for="inv_price">Vehicle Price
+    <input type="number" id="inv_price" name="inv_price" pattern="^[0-9]+$" placeholder="Enter only digits" required></label>
+  </div>
+
+  <!-- Vehicle Miles -->
+  <div class="form-group">
+    <label for="inv_miles">Vehicle Miles
+    <input type="number" id="inv_miles" name="inv_miles" placeholder="Enter only numbers" required></label>
+    <span class="error"></span>
+  </div>
+
+  <!-- Vehicle Color -->
+  <div class="form-group">
+    <label for="inv_color">Vehicle Color
+    <input type="text" id="inv_color" name="inv_color" required></label>
+  </div>
+
+  <!-- Classification Select List -->
+  <div class="form-group">
+    <label for="classification_id">Classification
+    <%- classificationList %></label>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit">Add Vehicle</button>
+</form>
+

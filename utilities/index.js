@@ -83,6 +83,32 @@ Util.buildVehicleHTML = (vehicleData) => {
   `
 }
 
+/* ************************************
+ * Build the classification dropdown list
+ * ************************************ */
+Util.buildClassificationList = async function(classification_id = null) {
+  try {
+    let data = await invModel.getClassifications()  // Fetch classifications from the database
+
+    let classificationList = '<select name="classification_id" id="classificationList" required>'
+    classificationList += "<option value=''>Choose a Classification</option>"
+
+    // Loop through the classification rows and create options
+    data.rows.forEach((row) => {
+      classificationList += `<option value="${row.classification_id}"`
+      if (classification_id && row.classification_id == classification_id) {
+        classificationList += " selected"
+      }
+      classificationList += `>${row.classification_name}</option>`
+    })
+
+    classificationList += "</select>"
+    return classificationList
+  } catch (error) {
+    console.error("Error building classification list:", error)
+    return `<p class="error">Unable to load classifications.</p>`
+  }
+}
 
 module.exports = Util
 

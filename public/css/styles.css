@@ -270,7 +270,7 @@ footer {
 
 /*Login form and labels styling*/
 
-.flash-message {
+.flash-message, .alert-info {
   background-color: #ffdddd;
   color: #a33;
   padding: 10px;
@@ -279,7 +279,7 @@ footer {
   text-align: center;
 }
 
-.login-form, .register-form {
+.login-form, .register-form, #addClassificationForm, .invform {
   max-width: 400px;
   margin: 20px auto;
   padding: 20px;
@@ -288,21 +288,21 @@ footer {
   border-radius: 5px;
 }
 
-.login-form .form-group {
+.login-form .form-group, #addClassificationForm, .invform {
   margin: 15px 0;
 }
 
-.login-form label, .register-form label {
+.login-form label, .register-form label, #addClassificationForm label, .invform label {
   display: block;
   margin-bottom: 5px;
 }
 
-.login-form input, .register-form input {
+.login-form input, .register-form input, .invform input {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
 }
-/*end of login form styling*/
+/*end of login, register, addclassifcation, add new vehicle form styling*/
 
 /* Responsive for small screens */
 @media (max-width: 768px) {

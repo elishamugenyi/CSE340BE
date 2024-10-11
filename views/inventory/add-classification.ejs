@@ -1,0 +1,46 @@
+<!-- view for add-classification.ejs -->
+
+<h1>Add New Classification</h1>
+
+<!-- Flash Messages -->
+<% if (messages && messages.length) { %>
+  <% messages.forEach(message => { %>
+    <div class="flash-message"><%= message %></div>
+  <% }) %>
+<% } %>
+
+<!-- Error Messages -->
+<% if (errors && errors.length) { %>
+  <% errors.forEach(error => { %>
+    <div class="error-message"><%= error.msg %></div>
+  <% }) %>
+<% } %>
+
+<form action="/inv/add-classification" method="POST" id="addClassificationForm">
+  <div class="form-group">
+     <label for="classification_name">Classification Name
+     <input 
+        type="text" 
+        id="classification_name" 
+        name="classification_name" 
+        required 
+        pattern="^[a-zA-Z]+$" 
+        title="Classification name cannot contain spaces, numbers or special characters"></label>
+  </div>
+  
+  <button type="submit">Add Classification</button>
+</form>
+
+<script>
+  // Basic client-side validation
+  document.getElementById('addClassificationForm').addEventListener('submit', function(event) {
+    const classificationName = document.getElementById('classification_name').value;
+    const pattern = /^[a-zA-Z]+$/;
+
+    if (!pattern.test(classificationName)) {
+      alert('Classification name cannot contain spaces, numbers or special characters.');
+      event.preventDefault();
+    }
+  });
+</script>
+

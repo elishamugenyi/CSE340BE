@@ -1,0 +1,16 @@
+<!-- This view will display the links to add new classification ad new vehicle -->
+<h1>Inventory Management</h1>
+
+<!-- Flash Messages -->
+<% if (messages && messages.length > 0) { %>
+    <div class="flash-message">
+        <%= messages[0] %>
+    </div>
+  <% } %>
+
+<!-- Links to Add Classifications and Inventory -->
+<ul>
+  <li><a href="/inv/add-classification">Add New Classification</a></li>
+  <li><a href="/inv/add-item">Add New Inventory Item</a></li>
+</ul>
+
