@@ -14,13 +14,13 @@
   <!-- Flash message section -->
   <% if (typeof message !== 'undefined') { %>
     <div class="flash-message">
-      <%= message %>
+      <%= notice %>
     </div>
   <% } %>
 
   <!-- Login form -->
   <section>
-    <form action="/account/login" method="POST" class="login-form">
+    <form action="/account/login" method="post" class="login-form">
       <div class="form-group">
         <label for="account_email">Email Address:
         <input type="email" id="account_email" name="account_email" placeholder="Enter a valid email address" required>
@@ -29,8 +29,7 @@
 
       <div class="form-group">
         <label for="account_password">Password:
-            <input type="password" id="account_password" name="account_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required>
-            <span>Passwords minimum lenght is 12 character long, contain at least 1 capital letter, 1 number,1 special character"</span>
+            <input type="password" id="account_password" name="account_password" required>
         </label>
       </div>
 

@@ -106,17 +106,6 @@ invCont.addClassification = async function(req, res, next) {
 /* ************************
  * Render Add Inventory View
  ************************** */
-/*invCont.buildAddInventory = async function(req, res, next) {
-  let nav = await utilities.getNav()
-  res.render('inventory/add-inventory', {
-    title: 'Add New Inventory Item',
-    nav,
-    errors: null
-  })
-}*/
-/* ************************
- * Render Add Inventory View
- ************************** */
 invCont.buildAddInventory = async function(req, res, next) {
   let nav = await utilities.getNav()
   let classificationList = await utilities.buildClassificationList()  // Generate classification drop-down
@@ -191,5 +180,62 @@ invCont.buildAddInventory = async function(req, res, next) {
     next(error)
   }
 }
+
+// Deliver the delete confirmation view
+invCont.getDeleteView = async (req, res) => {
+  try {
+    const nav = await utilities.getNav(); // Build navigation
+
+    res.render('inventory/delete-confirm', {
+      title: 'Delete Vehicle',
+      nav,
+      item: null, // No specific item data is loaded, admin will input details manually
+      errors: null,
+    });
+  } catch (error) {
+    console.error('Error rendering delete view:', error);
+    res.status(500).send('Server error');
+  }
+}
+
+// Process the deletion of a vehicle
+invCont.deleteInventoryItem = async (req, res, next) => {
+  try {
+    const { inv_id } = req.body;
+    console.log("inv_id", inv_id) //log inv id from the form if its there.
+
+    // Parse inv_id as an integer
+    const parsedInvId = parseInt(inv_id);
+    
+
+    //check if inv_id is not undefined or empty
+    if (!inv_id) {
+      req.flash ("error", "Inventory ID is missing.")
+      return res.redirect("/inv/delete-confirm")
+    }
+
+    
+    // Validate that inv_id is a number
+    if (isNaN(parsedInvId) || parsedInvId <= 0 ) {
+      throw new Error('Invalid inventory ID');
+    }
+  
+    // Attempt to delete the vehicle from the database
+    const result = await invModel.deleteInventory(parsedInvId);
+
+    if (result.rowCount === 0) {
+      req.flash('error', 'Vehicle not found or could not be deleted.');
+      return res.redirect('/inv/delete-confirm');
+    }
+
+    req.flash('success', `Vehicle with ID ${parsedInvId} successfully deleted.`);
+    res.redirect('/inv/management');
+  } catch (error) {
+    console.error('Error deleting inventory item:', error);
+    req.flash('error', 'An error occurred while attempting to delete the vehicle.');
+    res.redirect('/inv/delete-confirm');
+  }
+}
+
 
 module.exports = invCont

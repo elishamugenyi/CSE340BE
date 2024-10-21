@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Management</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+  </header>
+
+  <main>
+    <h1>Account Management</h1>
+
+    <!-- Flash Messages -->
+    <% if (messages && messages.length > 0) { %>
+      <div class="flash-message">
+        <%= messages[0] %>
+      </div>
+    <% } %>
+
+    <!-- Error Messages -->
+    <% if (errors && errors.length) { %>
+      <div class="error-message">
+        <%= errors[0].msg %>
+      </div>
+    <% } %>
+
+    <p>You're logged in.</p>
+
+    <!-- Greeting by account type -->
+    <h2>Welcome <%= account_firstname %></h2>
+
+    <!-- Update account link (visible to all clients) -->
+    <p><a href="/account/update/<%= account_id %>">Update Account Information</a></p>
+
+    <!-- Conditionally render Inventory Management link for Employee or Admin -->
+    <% if (account_type === "Employee" || account_type === "Admin") { %>
+      <h3>Inventory Management</h3>
+      <p><a href="/inventory/management">Go To Inventory Management</a></p>
+    <% } %>
+    
+  </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

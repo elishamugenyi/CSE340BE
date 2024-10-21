@@ -1,0 +1,58 @@
+<h1>Delete Vehicle</h1>
+<p><strong>Confirm Deletion - The delete is permanent and cannot be undone.</strong></p>
+
+<!-- Flash message for success/failure -->
+<% if (Array.isArray(messages) && messages.length > 0) { %>
+  <% messages.forEach(message => { %>
+    <div class="flash-message"><%= message %></div>
+  <% }) %>
+<% } %>
+
+<!-- Error Messages -->
+<% if (errors && errors.length) { %>
+  <% errors.forEach(error => { %>
+    <div class="error-message"><%= error.msg %></div>
+  <% }) %>
+<% } %>
+
+<form action="/inv/delete-confirm" method="POST" enctype="multipart/form-data" class="invform">
+  <!-- Vehicle Make -->
+  <div class="form-group">
+    <label for="inv_make">Vehicle Make
+      <input type="text" id="inv_make" name="inv_make" value="<%= item ? item.inv_make : '' %>" required>
+    </label>
+  </div>
+
+  <!-- Vehicle Model -->
+  <div class="form-group">
+    <label for="inv_model">Vehicle Model
+      <input type="text" id="inv_model" name="inv_model" value="<%= item ? item.inv_model : '' %>" required>
+    </label>
+  </div>
+
+  <!-- Vehicle Year -->
+  <div class="form-group">
+    <label for="inv_year">Vehicle Year
+      <input type="number" id="inv_year" name="inv_year" value="<%= item ? item.inv_year : '' %>" required>
+    </label>
+  </div>
+
+  <!-- Vehicle Price -->
+  <div class="form-group">
+    <label for="inv_price">Vehicle Price
+      <input type="number" id="inv_price" name="inv_price" value="<%= item ? item.inv_price : '' %>" required>
+    </label>
+  </div>
+
+  <!-- Input for inv_id -->
+  <div class="form-group">
+    <label for="inv_id">Vehicle ID (inv_id)
+      <input type="number" id="inv_id" name="inv_id" required>
+    </label>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit">Delete</button>
+</form>
+
+

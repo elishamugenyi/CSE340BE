@@ -94,4 +94,36 @@ async function addInventory(inventoryData) {
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById, addClassification, addInventory};
+// Get a single inventory item by its ID, this to be used later as needed.
+async function getInventoryById(inv_id) {
+  const query = 'SELECT * FROM inventory WHERE inv_id = $1';
+  
+  try {
+    const result = await pool.query(query, [inv_id]);
+    
+    // If the query returns a row, return the first row (since inv_id is unique)
+    if (result.rows.length) {
+      return result.rows[0];
+    } else {
+      return null; // If no item found, return null
+    }
+  } catch (error) {
+    console.error('Error retrieving inventory item by ID:', error);
+    throw error;
+  }
+}
+
+// Delete inventory item by ID
+async function deleteInventory(inv_id) {
+  const query = 'DELETE FROM inventory WHERE inv_id = $1';
+  try {
+    const result = await pool.query(query, [inv_id]);
+    return result.rowCount; // Returns the number of rows affected (should be 1)
+  } catch (error) {
+    console.error('Error deleting inventory item:', error);
+    throw error;
+  }
+}
+
+
+module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById, addClassification, addInventory, getInventoryById, deleteInventory};

@@ -10,10 +10,12 @@
 const session = require ("express-session")
 const pool = require('./database/')
 const bodyParser = require("body-parser")// add body-parser to require statements
+const cookieParser = require("cookie-parser")//added require statement for cookie-parser to be used to handle login session.
+const jwt= require ("jsonwebtoken")
 
 const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
-const env = require("dotenv").config()
+require("dotenv").config()
 const app = express()
 const static = require("./routes/static")
 const inventoryRoute = require("./routes/inventoryRoute")
@@ -33,9 +35,12 @@ app.use(session({
     pool,
   }),
   secret: process.env.SESSION_SECRET,
-  resave: true,
-  saveUninitialized: true,
+  resave: false, //changed it from true, save only if something changed
+  saveUninitialized: false, //dont create sesion until something is stored
   name: 'sessionId',
+  cookie: {
+    maxAge: 3600*1000 //1 hour
+  }
 }))
 
 // Express Messages Middleware
@@ -48,7 +53,36 @@ app.use(function(req, res, next){
 //These will make body-parser available, still part of middleware.
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true})) //for parsing application/x-www-form-urlencoded
+//add cookie-parser
+app.use(cookieParser())
 
+//JWT authentication middleware and adding to res.locals
+app.use((req, res, next) => {
+  const token = req.cookies.jwt; // Get JWT from cookies
+  
+  if (token) {
+    try {
+      // Verify JWT and get user data
+      const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET); // JWT secret should be stored in environment variables
+      
+      // Store user data in res.locals to make it available in all views
+      res.locals.user = decoded;
+      res.locals.account_firstname = decoded.account_firstname
+    } catch (err) {
+      console.error('JWT verification failed:', err);
+    }
+  }
+
+  // If using sessions, you can also add session-based user info to res.locals here
+  if (req.session && req.session.user) {
+    res.locals.user = req.session.user; // For session-based users
+  }
+
+  next();
+})
+
+//add checkTWToken 
+app.use(utilities.checkJWTToken)
 
 /* ***********************
  * View Engine and Templates
