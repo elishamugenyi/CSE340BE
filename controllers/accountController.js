@@ -168,6 +168,11 @@ async function buildUpdateAccountView(req, res) {
 
   try {
     const decoded = jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET)
+
+    //log the account_id
+    console.log("Decoded account_id: ", decoded.account_id)
+
+    //retrieve account_id from database using account_id
     const account = await accountModel.getAccountById(decoded.account_id)
 
     res.render('account/update', {
@@ -191,8 +196,33 @@ async function buildUpdateAccountView(req, res) {
 * *************************************** */
 async function updateAccount(req, res) {
   let nav = await utilities.getNav()
-  const errors = validationResult(req)
 
+  //log form data to check if account_id is correctly passed
+  console.log("form data: ", req.body)
+
+  try {
+    // Use the account_id from req.body to update the account information
+    const result = await accountModel.updateAccountInfo(
+      req.body.account_id, // Ensure account_id is passed here
+      req.body.account_firstname,
+      req.body.account_lastname,
+      req.body.account_email
+    );
+    
+    if (result) {
+      req.flash('notice', 'Account information updated successfully.');
+      return res.redirect('/account/management');
+    } else {
+      req.flash('notice', 'Failed to update account information.');
+      return res.redirect('/account/update');
+    }
+  } catch (error) {
+    console.error('Error updating account: ', error);
+    res.status(500).send('Server error');
+  }
+
+  //const errors = validationResult(req)
+/*
   if (!errors.isEmpty()) {
     return res.render('account/update', {
       title: 'Update Account Information',
@@ -218,7 +248,7 @@ async function updateAccount(req, res) {
   } catch (error) {
     console.error('Error updating account: ', error)
     res.status(500).send('Server error')
-  }
+  }*/
 }
 
 /* ****************************************

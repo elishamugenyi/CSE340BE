@@ -19,14 +19,14 @@ router.get("/account-management", utilities.checkLogin, utilities.handleErrors(a
 router.get('/update/:account_id', accountController.buildUpdateAccountView)
 
 // Route to process the account update
-router.post('/update', [
+router.post('/update', /*[
   check('account_email').custom(async (account_email, { req }) => {
     const account = await accountController.getAccountByEmail(account_email)
     if (account && account.account_id !== req.body.account_id) {
       throw new Error('Email address already in use');
     }
   })
-], accountController.updateAccount);
+]*/ accountController.updateAccount);
 
 // Route to process the password change
 router.post('/change-password', [

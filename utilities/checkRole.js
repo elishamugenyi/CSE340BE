@@ -16,7 +16,7 @@ function checkRole(allowedRoles) {
       const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
 
       // Check if user has the correct role
-      if (!allowedRoles.includes(decoded.account_type)) {
+      if (allowedRoles.includes(decoded.account_type)) {
         next() //proceed if roles match
       } else {
         req.flash("notice", "You do not have permission to access this page.")
