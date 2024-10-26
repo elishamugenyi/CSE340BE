@@ -41,7 +41,7 @@
       <label for="account_email">Email
       <input type="email" id="account_email" name="account_email" required value="<%= account_email ? account_email : '' %>"></label>
 
-      <input type="hidden" name="account_id" value="<%= account_id %>">
+      <input type="hidden" name="account_id" value="<%= account_id ? account_id : '' %>">
 
       <input type="submit" value="Update Account">
     </form>

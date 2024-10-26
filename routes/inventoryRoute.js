@@ -12,16 +12,16 @@ router.get("/type/:classificationId",invController.buildByClassificationId);
 router.get("/detail/:invId", invController.getVehicleDetail)
 
 //Route for inventory management
-router.get("/inventory/management", checkRole(['Employee', 'Admin']), invController.buildManagement)
+router.get("/management", /*checkRole(['Employee', 'Admin']),*/ invController.buildManagement)
 
 //Route to add a new classsification
-router.get("/add-classification", checkRole(['Employee', 'Admin']), invController.buildAddClassification)
+router.get("/add-classification", /*checkRole(['Employee', 'Admin']),*/ invController.buildAddClassification)
 
 //Route to add a new inventory item
-router.get("/add-item", checkRole(['Employee', 'Admin']), invController.buildAddInventory)
+router.get("/add-item", /*checkRole(['Employee', 'Admin']),*/ invController.buildAddInventory)
 
 //route to get delete view
-router.get("/delete-confirm", checkRole(['Employee', 'Admin']), invController.getDeleteView)
+router.get("/delete-confirm", /*checkRole(['Employee', 'Admin']),*/ invController.getDeleteView)
 
 //route to handle the deletion process
 router.post("/inv/delete-confirm", checkRole(['Employee', 'Admin']), invController.deleteInventoryItem)

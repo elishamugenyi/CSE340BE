@@ -53,6 +53,10 @@ app.use(function(req, res, next){
 //These will make body-parser available, still part of middleware.
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true})) //for parsing application/x-www-form-urlencoded
+
+//log middleware
+console.log("Body parse middleware loaded")
+
 //add cookie-parser
 app.use(cookieParser())
 
