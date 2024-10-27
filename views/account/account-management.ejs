@@ -44,12 +44,12 @@
     <h2>Welcome <%= account_firstname %></h2>
 
     <!-- Update account link (visible to all clients) -->
-    <p><a href="/account/update/<%= account_id %>">Update Account Information</a></p>
+    <p><a href="/account/update/<%= account_id %>" class="add-link">Update Account Information</a></p>
 
     <!-- Conditionally render Inventory Management link for Employee or Admin -->
     <% if (account_type === "Employee" || account_type === "Admin") { %>
       <h3>Inventory Management</h3>
-      <p><a href="/inv/management">Go To Inventory Management</a></p>
+      <p><a href="/inv/management" class="manager">Go To Inventory Management</a></p>
     <% } %>
     
   </main>

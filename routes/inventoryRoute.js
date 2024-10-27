@@ -2,6 +2,7 @@
 const express = require("express")
 const router = new express.Router()
 const invController = require("../controllers/invController")
+const reviewController = require("../controllers/reviewController")
 const { check } = require("express-validator")
 const checkRole = require("../utilities/checkRole")
 
@@ -10,6 +11,9 @@ router.get("/type/:classificationId",invController.buildByClassificationId);
 
 //add this route that accepts inventory Id as URL. New line - 04/oct
 router.get("/detail/:invId", invController.getVehicleDetail)
+
+//Route to add a review
+router.post("/reviews", reviewController.addReview)
 
 //Route for inventory management
 router.get("/management", checkRole(['Employee', 'Admin']), invController.buildManagement)

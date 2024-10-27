@@ -1,0 +1,32 @@
+<section class="reviews">
+    <h2>User Reviews</h2>
+  
+    <!-- Display all reviews -->
+    <% reviews.forEach(review => { %>
+      <div class="review">
+        <p><strong><%= review.full_name %></strong> rated: <%= review.rating %>/5</p>
+        <p><%= review.comment %></p>
+        <p><em><%= new Date(review.created_at).toLocaleDateString() %></em></p>
+      </div>
+    <% }); %>
+  
+    <!-- Review submission form for authenticated users -->
+    <% if (user) { %>
+      <form action="/inv/reviews" method="POST">
+        <label for="rating">Rating:</label>
+        <select name="rating" id="rating" required>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <label for="comment">Comment:</label>
+        <textarea name="comment" id="comment" required></textarea>
+        <button type="submit">Submit Review</button>
+      </form>
+    <% } else { %>
+      <p>Please <a href="/login">login</a> to submit a review.</p>
+    <% } %>
+  </section>
+  

@@ -1,5 +1,6 @@
 const { validationResult } = require("express-validator")//this will validate data
 const invModel = require("../models/inventory-model")
+const reviewModel = require("../models/review-model")
 const utilities = require("../utilities/")
 
 const invCont = {}
@@ -12,6 +13,7 @@ const getVehicleDetail = async (req, res, next) => {
   try {
     // Fetch the vehicle data using the invId
     const vehicleData = await invModel.getVehicleById(invId)
+    const reviews = await reviewModel.getReviewsByItem(invId)
     
     if (vehicleData) {
       // Create HTML content using a utility function
@@ -20,7 +22,9 @@ const getVehicleDetail = async (req, res, next) => {
       res.render("inventory/detail", {
         title: `${vehicleData.inv_make} ${vehicleData.inv_model}`,
         vehicleHTML,
-        nav: await utilities.getNav()
+        reviews, //pass reviews
+        nav: await utilities.getNav(),
+        user: req.user //pass user if logged in
       })
     } else {
       next({ status: 404, message: "Vehicle not found" })

@@ -117,11 +117,6 @@ button {
   background-color: #0063B2FF;
   color: white;
 }
-/*
-button:hover {
-  background-color: #0063B2FF;
-  color: white;
-}*/
 
 /* Content section styling */
 .content-section {
@@ -246,10 +241,15 @@ button:hover {
 /* Color-coded Links */
 .add-link {
   background-color: #28a745; /* Green for adding */
+  border-radius: 10px;
+  color: white;
+
 }
 
 .add-link:hover {
-  background-color: #218838;
+  background-color: dodgerblue;
+  color: white;
+  border-radius: 10px;
 }
 
 .delete-link {
