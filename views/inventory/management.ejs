@@ -1,17 +1,49 @@
 <!-- This view will display the links to add new classification ad new vehicle -->
-<h1>Inventory Management</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Management</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1 class="inv-management">Inventory Management</h1>
+  </header>
 
-<!-- Flash Messages -->
-<% if (messages && messages.length > 0) { %>
-    <div class="flash-message">
-        <%= messages[0] %>
-    </div>
-  <% } %>
+  <main>
 
-<!-- Links to Add Classifications and Inventory -->
-<ul>
-  <li><a href="/inv/add-classification">Add New Classification</a></li>
-  <li><a href="/inv/add-item">Add New Inventory Item</a></li>
-  <li><a href="/inv/delete-confirm">Delete Inventory Item</a></li>
-</ul>
+    <!-- Flash Messages -->
+    <% if (messages && messages.length > 0) { %>
+        <div class="flash-message">
+            <%= messages[0] %>
+        </div>
+      <% } %>
+      <script>
+        // Set a timer to remove the flash message after 30 seconds
+        setTimeout(function() {
+          const flashMessage = document.querySelectorAll('.flash-message');
+          if (flashMessage) {
+            flashMessage.classList.add('fade-out'); // Start fading out
+            setTimeout(() => flashMessage.remove(), 1000); // Remove element after fade
+            //flashMessage.style.display = 'none'; // Hide the flash message
+          }
+        }, 30000); // 30,000 milliseconds = 30 seconds
+      </script>
+
+    <!-- Links to Add Classifications and Inventory -->
+    <ul>
+      <li><a href="/inv/add-classification" class="add-link">Add New Classification</a></li>
+      <li><a href="/inv/add-item" class="add-link">Add New Inventory Item</a></li>
+      <li><a href="/inv/delete-confirm" class="delete-link">Delete Inventory Item</a></li>
+    </ul>
+
+  </main>
+
+  <footer>
+  </footer>
+</body>
+</html>
+
 

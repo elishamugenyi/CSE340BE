@@ -236,6 +236,30 @@ button:hover {
 }
 /*styling for dynamic elements, ends here*/
 
+/*Styling for management view*/
+.inv-management {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Color-coded Links */
+.add-link {
+  background-color: #28a745; /* Green for adding */
+}
+
+.add-link:hover {
+  background-color: #218838;
+}
+
+.delete-link {
+  background-color: #dc3545; /* Red for deleting */
+}
+
+.delete-link:hover {
+  background-color: #c82333;
+}
+
 /* Footer styling */
 footer {
   text-align: center;
@@ -277,6 +301,11 @@ footer {
   margin: 10px 0;
   border: 1px solid #a33;
   text-align: center;
+}
+/*fade effect for flash messages.*/
+.fade-out {
+  transition: opacity 1s ease-out;
+  opacity: 0;
 }
 
 .login-form, .register-form, #addClassificationForm, .invform {

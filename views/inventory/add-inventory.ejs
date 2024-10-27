@@ -1,5 +1,4 @@
 
-
 <h1>Add New Inventory Item</h1>
 
 <!-- Flash message for success/failure -->
@@ -8,6 +7,17 @@
     <div class="flash-message"><%= message %></div>
   <% }) %>
 <% } %>
+<script>
+  // Set a timer to remove the flash message after 30 seconds
+  setTimeout(function() {
+    const flashMessage = document.querySelectorAll('.flash-message');
+    if (flashMessage) {
+      flashMessage.classList.add('fade-out'); // Start fading out
+      setTimeout(() => flashMessage.remove(), 1000); // Remove element after fade
+      //flashMessage.style.display = 'none'; // Hide the flash message
+    }
+  }, 30000); // 30,000 milliseconds = 30 seconds
+</script>
 <!-- Error Messages -->
 <% if (errors && errors.length) { %>
     <% errors.forEach(error => { %>

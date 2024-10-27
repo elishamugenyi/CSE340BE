@@ -137,7 +137,7 @@ invCont.buildAddInventory = async function(req, res, next) {
   const { inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id } = req.body
   
   //log form data
-  console.log("Form Data:", req.body)
+  //console.log("Form Data:", req.body)
 
   const errors = validationResult(req)
   
@@ -179,7 +179,7 @@ invCont.buildAddInventory = async function(req, res, next) {
     })
 
     req.flash('info', 'New inventory item added successfully!')
-    res.redirect('/inv')
+    res.redirect('/inv/management')
   } catch (error) {
     next(error)
   }
@@ -206,7 +206,7 @@ invCont.getDeleteView = async (req, res) => {
 invCont.deleteInventoryItem = async (req, res, next) => {
   try {
     const { inv_id } = req.body;
-    console.log("inv_id", inv_id) //log inv id from the form if its there.
+    //console.log("inv_id", inv_id) //log inv id from the form if its there.
 
     // Parse inv_id as an integer
     const parsedInvId = parseInt(inv_id);
@@ -218,7 +218,6 @@ invCont.deleteInventoryItem = async (req, res, next) => {
       return res.redirect("/inv/delete-confirm")
     }
 
-    
     // Validate that inv_id is a number
     if (isNaN(parsedInvId) || parsedInvId <= 0 ) {
       throw new Error('Invalid inventory ID');

@@ -170,7 +170,7 @@ async function buildUpdateAccountView(req, res) {
     const decoded = jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET)
 
     //log the account_id
-    console.log("Decoded account_id: ", decoded.account_id)
+    //console.log("Decoded account_id: ", decoded.account_id)
 
     //retrieve account_id from database using account_id
     const account = await accountModel.getAccountById(decoded.account_id)

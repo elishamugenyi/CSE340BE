@@ -12,7 +12,7 @@ router.get("/type/:classificationId",invController.buildByClassificationId);
 router.get("/detail/:invId", invController.getVehicleDetail)
 
 //Route for inventory management
-router.get("/management", /*checkRole(['Employee', 'Admin']),*/ invController.buildManagement)
+router.get("/management", checkRole(['Employee', 'Admin']), invController.buildManagement)
 
 //Route to add a new classsification
 router.get("/add-classification", /*checkRole(['Employee', 'Admin']),*/ invController.buildAddClassification)
@@ -24,7 +24,7 @@ router.get("/add-item", /*checkRole(['Employee', 'Admin']),*/ invController.buil
 router.get("/delete-confirm", /*checkRole(['Employee', 'Admin']),*/ invController.getDeleteView)
 
 //route to handle the deletion process
-router.post("/inv/delete-confirm", checkRole(['Employee', 'Admin']), invController.deleteInventoryItem)
+router.post("/delete-confirm", checkRole(['Employee', 'Admin']), invController.deleteInventoryItem)
 
 // Route to handle the form submission with server-side validation
 router.post("/add-classification", 

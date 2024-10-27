@@ -55,7 +55,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true})) //for parsing application/x-www-form-urlencoded
 
 //log middleware
-console.log("Body parse middleware loaded")
+//console.log("Body parse middleware loaded")
 
 //add cookie-parser
 app.use(cookieParser())
